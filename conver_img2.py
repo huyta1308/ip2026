@@ -11,6 +11,21 @@ resized_img= cv2.resize(gray_img,None, fx = 1.5, fy = 1.5, interpolation=cv2.INT
 
 equalized = cv2.equalizeHist(gray_img)
 
+def info_img(img,img_name= "Image"):
+    if len(img.shape) == 3:
+        height, width, channels = img.shape
+    else:
+        height, width = img.shape
+        channels = 1
+    print(f"Image size: {height}x{width} pixels ")
+    print(f"Numbers of channels: {channels}")
+    print(f"Datatype: {img.dtype}")
+    print(f"Min pixel value: {img.min()}")
+    print(f"Max pixels value: {img.max()}")
+
+info_img(origin_img, "Original Image")
+print("=======================")
+info_img(gray_img, "Gray Image")
 plt.figure(figsize=(13, 6))
 # --- Original Image ---
 plt.subplot(2,3,1)
